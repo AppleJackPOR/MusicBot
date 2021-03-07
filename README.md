@@ -24,7 +24,9 @@ Task | Developed by
 Scope definition & Initial Research | André & Hugo
 Initial integration | Hugo
 Join Voice Channel | Hugo
+Leave Voice Channel | Pedro
 Sensitive Data Manipulation | Pedro & Hugo
+Bot's Gaming Activity | Pedro & Hugo
 
 
 Used during the project development:
