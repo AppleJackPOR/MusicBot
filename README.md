@@ -10,7 +10,8 @@ The bot is still under development. It is being built in Python and oriented to 
 - info/inf: Board with details of the bot
 - hello/hi: Greetings to the user
 - ping: Sends a message to verify if bot is up/available
-- join: Bots joins current user's voice channel
+- join: Bot joins current user's voice channel
+- leave: Bot disconnects from current channel
 
 **MH commands being developed:**
 - play *Playlist_link*: Bot plays Youtube Playlist
