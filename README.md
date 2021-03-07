@@ -3,6 +3,7 @@
 Project under development. Built in Python and oriented to Discord.
 
 **Prefix:** %
+
 **Current commands available:**
 - info/inf: Board with details of the bot
 - hello/hi: Greetings to the user
@@ -12,7 +13,7 @@ Project under development. Built in Python and oriented to Discord.
 - play *Playlist_link*: Bot plays Youtube Playlist
 
 WH commands:
-> play works for spotify playlists
+- play works for spotify playlists
 
 ## List os tasks
 Task | Developed by
