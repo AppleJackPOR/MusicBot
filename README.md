@@ -35,10 +35,7 @@ Used during the project development:
 - Python
 
 **Developers:**
-
--Hugo Varela
-
--Pedro Monteiro
-
+- Hugo Varela
+- Pedro Monteiro
 
 >Now running in version 1.2. Last Version Update: 07/03/2021
