@@ -15,6 +15,7 @@ The bot is still under development. It is being built in Python and oriented to 
 
 **MH commands being developed:**
 - play *Playlist_link*: Bot plays Youtube Playlist
+- Cloud integration will be required in order to have a 24/7 bot consistently playing
 
 **WH commands:**
 - play works for spotify playlists
