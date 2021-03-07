@@ -1,5 +1,6 @@
 # [Discord] Music Bot
 
+## Project Scope
 DJ PaixHug is the initial name for the music bot and the main idea is to have a bot playing playlists without disconnecting. There are a few number of free bots with these option and no ads and that is the motivation for the project.
 The bot is still under development. It is being built in Python and oriented to Discord.
 
