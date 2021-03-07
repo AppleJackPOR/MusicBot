@@ -31,4 +31,4 @@ Used during the project development:
 - Python
 
 
->Now running in version 1.1.
+>Now running in version 1.1. Last Version Update: 07/03/2021
