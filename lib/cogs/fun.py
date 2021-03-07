@@ -37,9 +37,14 @@ class Fun(Cog, BotBase):
         if ctx.message.author.voice is None:
             await ctx.send('You are not connected to a voice channel')
             return
+        elif ctx.message.guild.voice_client is not None:
+            await ctx.send('Já estou conectado')
         else:
             channel = ctx.message.author.voice.channel
-        await channel.connect()
+            await channel.connect()
+            await ctx.send(f"Conectado a: {channel}")
+
+
 
     @command(name="leave", aliases=["disconnect", "baza"])
     async def leave_voice(self, ctx):
