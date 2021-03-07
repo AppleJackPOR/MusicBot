@@ -3,3 +3,4 @@
 __pycache__
 .env
 ./lib/bot/__pycache__/
+./lib/cogs/__pycache__/
