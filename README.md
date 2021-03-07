@@ -18,6 +18,7 @@ The bot is still under development. It is being built in Python and oriented to 
 
 **WH commands:**
 - play works for spotify playlists
+- sql folder is already created for a possible integration in the future. It is important to refer that this is very low priority since it is not inside the project scope.
 
 ## List of Implemented Tasks
 Task | Developed by
