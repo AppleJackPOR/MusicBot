@@ -8,9 +8,10 @@ The bot is still under development. It is being built in Python and oriented to 
 **Current commands available:**
 - info/inf: Board with details of the bot
 - hello/hi: Greetings to the user
+- ping: Sends a message to verify if bot is up/available
+- join: Bots joins current user's voice channel
 
 **MH commands being developed:**
-- join: Bots joins current user's voice channel
 - play *Playlist_link*: Bot plays Youtube Playlist
 
 WH commands:
@@ -21,6 +22,8 @@ Task | Developed by
 ------------ | -------------
 Scope definition & Initial Research | André & Hugo
 Initial integration | Hugo
+Join Voice Channel | Hugo
+Sensitive Data Manipulation | Pedro & Hugo
 
 Used during the project development:
 - Discord
