@@ -1,17 +1,16 @@
 from os.path import isfile
 from sqlite3 import connect
 
-
-#PATHS
+# PATHS
 DB_PATH = "./data/db/database.db"
 BUILD_PATH = "./data/db/build.sql"
 
-
-#CONNS
+# CONNS
 cxn = connect(DB_PATH, check_same_thread=False)
 cur = cxn.cursor()
 
-#COMMIT DEC
+
+# COMMIT DEC
 def with_commit(func):
     def inner(*args, **kwargs):
         func(*args, **kwargs)
@@ -25,14 +24,16 @@ def build():
     if isfile(BUILD_PATH):
         scriptexec(BUILD_PATH)
 
+
 def commit():
     cxn.commit()
+
 
 def close():
     cxn.close()
 
 
-#DATA RETURN
+# DATA RETURN
 def field(command, *values):
     cur.execute(command, tuple(values))
 
@@ -42,7 +43,7 @@ def field(command, *values):
 
 def record(command, *values):
     cur.execute(command, tuple(values))
-    
+
     return cur.fetchone()
 
 
@@ -50,6 +51,7 @@ def records(command, *values):
     cur.execute(command, tuple(values))
 
     return cur.fetchall()
+
 
 def column(command, *values):
     cur.execute(command, tuple(values))
@@ -60,8 +62,10 @@ def column(command, *values):
 def execute(command, *values):
     cur.execute(command, tuple(values))
 
+
 def multiexec(command, valueset):
     cur.executemany(command, valueset)
+
 
 def scriptexec(path):
     with open(path, "r", encoding="utf-8") as script:

@@ -1,20 +1,18 @@
 import os
 from dotenv import load_dotenv
-
 from discord import Intents
 from glob import glob
 from asyncio import sleep
-
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from discord import Embed
-from discord.ext.commands import Bot as BotBase 
+from discord.ext.commands import Bot as BotBase
 from discord.ext.commands import CommandNotFound
-from datetime import datetime
+
 
 load_dotenv()
-PREFIX="%"
+PREFIX = "%"
 OWNER_ID = os.getenv('OWNER_ID')
 COGS = [path.split("\\")[-1][:-3] for path in glob("./lib/cogs/*.py")]
+
 
 class Ready(object):
     def __init__(self):
@@ -27,6 +25,7 @@ class Ready(object):
 
     def all_ready(self):
         return all([getattr(self, cog) for cog in COGS])
+
 
 class Bot(BotBase):
     def __init__(self):
@@ -41,29 +40,25 @@ class Bot(BotBase):
             command_prefix=PREFIX,
             owner_ids=OWNER_ID,
             intents=Intents.all()
-            )
+        )
 
     def setup(self):
         for cog in COGS:
             self.load_extension(f"lib.cogs.{cog}")
             print(f"{cog} cog loaded")
-        
-        print("Setup completed")
 
+        print("Setup completed")
 
     def run(self, VERSION):
         self.version = VERSION
         self.setup()
-        self.TOKEN =os.getenv('TOKEN')
+        self.TOKEN = os.getenv('TOKEN')
 
         print("Running...")
         super().run(self.TOKEN, reconnect=True)
 
-
     async def on_connect(self):
         print("Bot Connected")
-
-
 
     async def on_disconnect(self):
         print("Bot Disconnected")
@@ -72,22 +67,21 @@ class Bot(BotBase):
         if err == "on_command_error":
             await args[0].send("Something went wrong")
 
-        #channel= self.get_channel(channel_id)
-        #await channel.send("Ocorreu um erro")
-
+        # channel= self.get_channel(channel_id)
+        # await channel.send("Ocorreu um erro")
 
     async def on_command_error(self, ctx, exc):
-        if isinstance(exc,CommandNotFound):
+        if isinstance(exc, CommandNotFound):
             await ctx.send("Comando inválido")
 
-        elif hasattr(exc,"original"):
+        elif hasattr(exc, "original"):
             raise exc.original
         else:
             raise exc
 
     async def on_ready(self, ctx):
         if not self.ready:
-            #self.guild=self.get_guild(guild_id)
+            # self.guild=self.get_guild(guild_id)
 
             ''' EMBED DE INFO - Está a funcionar como comando em fun.py > command "info"
             channel = self.get_channel(channel_id)
@@ -108,14 +102,14 @@ class Bot(BotBase):
             while not self.cogs_ready.all_ready():
                 await sleep(0.5)
 
-            self.ready=True
+            self.ready = True
 
         else:
             print("Bot reconnected")
-    
 
-    async def on_message(self,message):
+    async def on_message(self, message):
         if not message.author.bot:
             await self.process_commands(message)
+
 
 bot = Bot()
