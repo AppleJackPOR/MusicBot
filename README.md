@@ -14,10 +14,10 @@ The bot is still under development. It is being built in Python and oriented to 
 **MH commands being developed:**
 - play *Playlist_link*: Bot plays Youtube Playlist
 
-WH commands:
+**WH commands:**
 - play works for spotify playlists
 
-## List os tasks
+## List of Implemented Tasks
 Task | Developed by
 ------------ | -------------
 Scope definition & Initial Research | André & Hugo
@@ -25,9 +25,10 @@ Initial integration | Hugo
 Join Voice Channel | Hugo
 Sensitive Data Manipulation | Pedro & Hugo
 
+
 Used during the project development:
 - Discord
 - Python
 
 
-Now running in version 1.1.
+>Now running in version 1.1.
