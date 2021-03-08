@@ -2,5 +2,6 @@
 *.db-journal
 __pycache__
 .env
+ffmpeg.exe
 ./lib/bot/__pycache__/
 ./lib/cogs/__pycache__/

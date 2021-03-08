@@ -1,17 +1,22 @@
+import datetime
 import os
-from dotenv import load_dotenv
-from discord import Intents
-from glob import glob
 from asyncio import sleep
+from glob import glob
+from random import choice
+
+import discord
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from discord import Intents
 from discord.ext.commands import Bot as BotBase
 from discord.ext.commands import CommandNotFound
-
+from dotenv import load_dotenv
 
 load_dotenv()
 PREFIX = "%"
 OWNER_ID = os.getenv('OWNER_ID')
 COGS = [path.split("\\")[-1][:-3] for path in glob("./lib/cogs/*.py")]
+
+status_list = ["Super Mario", "CS:GO", "Alone"]
 
 
 class Ready(object):
@@ -59,6 +64,11 @@ class Bot(BotBase):
 
     async def on_connect(self):
         print("Bot Connected")
+        while True:
+            if datetime.datetime.now().minute % 5 == 0:
+                game = choice(status_list)
+                await self.change_presence(activity=discord.Game(game))
+            await sleep(60)
 
     async def on_disconnect(self):
         print("Bot Disconnected")
