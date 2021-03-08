@@ -30,11 +30,14 @@ Join Voice Channel | Hugo
 Leave Voice Channel | Pedro
 Sensitive Data Manipulation | Pedro & Hugo
 Bot's Gaming Activity | Pedro & Hugo
+Play Music | Pedro
+Error Handling | Pedro & Hugo
 
 
 Used during the project development:
 - Discord
 - Python
+- FFmpeg
 
 **Developers:**
 - Hugo Varela
