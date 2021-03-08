@@ -12,6 +12,7 @@ The bot is still under development. It is being built in Python and oriented to 
 - ping: Sends a message to verify if bot is up/available
 - join: Bot joins current user's voice channel
 - leave: Bot disconnects from current channel
+- play: Bot plays a music based on the url provided
 
 **MH commands being developed:**
 - play *Playlist_link*: Bot plays Youtube Playlist
@@ -43,4 +44,4 @@ Used during the project development:
 - Hugo Varela
 - Pedro Monteiro
 
->Now running in version 1.2. Last Version Update: 07/03/2021
+>Now running in version 1.3. Last Version Update: 08/03/2021
