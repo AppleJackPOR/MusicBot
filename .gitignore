@@ -5,4 +5,4 @@ __pycache__
 ffmpeg.exe
 ./lib/bot/__pycache__/
 ./lib/cogs/__pycache__/
-./FFmpeg/
+./FFmpeg/ffmpeg/
