@@ -16,7 +16,7 @@ youtube_dl.utils.bug_reports_message = lambda: ''
 
 ytdl_format_options = {
     'format': 'bestaudio/best',
-    'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
+    'outtmpl': '/music_files/%(id)s.mp3',
     'restrictfilenames': True,
     'noplaylist': True,
     'nocheckcertificate': True,
@@ -63,21 +63,34 @@ class Fun(Cog, BotBase):
 
     @command(name='play', aliases=['sing'])
     async def play(self, ctx, *, url):
-        if ctx.message.author.voice is None:               
+        if ctx.message.author.voice is None:
             await ctx.send("Tão pinguim, tens de estar conectado a um voice channel")
         elif ctx.message.guild.voice_client is None:
             channel = ctx.message.author.voice.channel
             await channel.connect()
             player = await YTDLSource.from_url(url, loop=self.bot.loop)
-            ctx.voice_client.play(player)#, after=lambda e: print('Player error: %s' % e) if e else None)
+            ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
             await ctx.send('Now playing: {}'.format(player.title))
-        elif (ctx.message.guild.voice_client.channel == ctx.message.author.voice.channel):
+        elif ctx.message.guild.voice_client.channel == ctx.message.author.voice.channel:
             player = await YTDLSource.from_url(url, loop=self.bot.loop)
-            ctx.voice_client.play(player)#, after=lambda e: print('Player error: %s' % e) if e else None)
+            ctx.voice_client.play(player)  # , after=lambda e: print('Player error: %s' % e) if e else None)
             await ctx.send('Now playing: {}'.format(player.title))
         else:
             await ctx.send("Zequinha, estou ocupado noutro canal a bombar uns sons mêmo à bacanz")
 
+    @command(name='pause', aliase=['pausa'])
+    async def pause(self, ctx):
+        server = ctx.message.guild
+        voice_channel = server.voice_client
+
+        voice_channel.pause()
+
+    @command(name='resume', aliases=['continuar'])
+    async def resume(self, ctx):
+        server = ctx.message.guild
+        voice_channel = server.voice_client
+
+        voice_channel.resume()
 
     @command(name="info", aliases=["inf"])
     async def show_info(self, ctx):
