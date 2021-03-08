@@ -63,11 +63,21 @@ class Fun(Cog, BotBase):
 
     @command(name='play', aliases=['sing'])
     async def play(self, ctx, *, url):
-        async with ctx.typing():
+        if ctx.message.author.voice is None:               
+            await ctx.send("Tão pinguim, tens de estar conectado a um voice channel")
+        elif ctx.message.guild.voice_client is None:
+            channel = ctx.message.author.voice.channel
+            await channel.connect()
             player = await YTDLSource.from_url(url, loop=self.bot.loop)
-            ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-
+            ctx.voice_client.play(player)#, after=lambda e: print('Player error: %s' % e) if e else None)
             await ctx.send('Now playing: {}'.format(player.title))
+        elif (ctx.message.guild.voice_client.channel == ctx.message.author.voice.channel):
+            player = await YTDLSource.from_url(url, loop=self.bot.loop)
+            ctx.voice_client.play(player)#, after=lambda e: print('Player error: %s' % e) if e else None)
+            await ctx.send('Now playing: {}'.format(player.title))
+        else:
+            await ctx.send("Zequinha, estou ocupado noutro canal a bombar uns sons mêmo à bacanz")
+
 
     @command(name="info", aliases=["inf"])
     async def show_info(self, ctx):
@@ -88,10 +98,9 @@ class Fun(Cog, BotBase):
         await ctx.send("pong")
 
     @command(name="join")
-    async def send(self, ctx):
+    async def join_voice(self, ctx):
         if ctx.message.author.voice is None:
             await ctx.send('You are not connected to a voice channel')
-            return
         elif ctx.message.guild.voice_client is not None:
             await ctx.send('Já estou conectado')
         else:
@@ -103,6 +112,7 @@ class Fun(Cog, BotBase):
     async def leave_voice(self, ctx):
         voice = ctx.message.guild.voice_client
         await voice.disconnect()
+        await ctx.send('Bazei')
 
     @command(name="hello", aliases=["hi", "Hi", "Hello"])
     async def say_hello(self, ctx):
